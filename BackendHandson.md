@@ -19,11 +19,13 @@ Python 3.6.5
 
 ## 全体の概要
 本ハンズオン終了後、全体でこのような構成になります。
+
 <img src="img/all.png" alt="image" title="image">
 
 
 ## コマンドでサーバーを立ててみる
 まずは、サーバーを立ててみましょう。図で言うとこの部分になります。
+
 <img src="img/server.png" alt="image" title="image">
 
 以下のコマンドを叩いてみてください。
@@ -167,6 +169,7 @@ namiko
 
 ## データベースを使ってみよう。
 この部分になります。
+
 <img src="img/db.png" alt="image" title="image">
 
 ### sqlite3のインストール
@@ -230,6 +233,7 @@ https://docs.python.org/ja/3/library/sqlite3.html
 
 ## サーバーに送ったデータをデータベースに格納してみよう
 この部分になります。
+
 <img src="img/server-db.png" alt="image" title="image">
 
 次のように`server.py`を修正してみましょう。
