@@ -1,17 +1,15 @@
-from flask import Flask, render_template, request
+from flask import Flask, request
 import sqlite3
 
 app_server = Flask(__name__)
 
 @app_server.route('/')
 def hello():
-    name = "Hello World"
-    return name
+    return "Hello World"
 
 @app_server.route('/getname')
 def getname():
-    name = "Namiko"
-    return name
+    return "Tori"
 
 @app_server.route('/app', methods=['POST'])
 def app():
