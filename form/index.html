@@ -12,66 +12,69 @@
 </head>
 
 <body>
-    <form class="form-body mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp"
-        action="http://127.0.0.1:5000/app" method="POST">
-        <div class="form-content">
-            <h1 class="text" style="text-align: center;">TEAra感想フォーム</h1>
-        </div>
-        <div class="form-content">
-            <pre class="text form-description" style="text-align: center;">イベント:「HTMLで作成したフォームをサーバーサイドに送ってみよう」のサンプルフォームだよ。
+    <div class="form-body">
+        <form class="form-body mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp"
+            action="http://127.0.0.1:5000/app" method="POST">
+            <div class="form-content">
+                <h1 class="text" style="text-align: center;">TEAra感想フォーム</h1>
+            </div>
+            <div class="form-content">
+                <pre class="text form-description" style="text-align: center;">イベント:「HTMLで作成したフォームをサーバーサイドに送ってみよう」のサンプルフォームだよ。
 入力内容を確認して送信する実装にはしていません！時間のある人はチャレンジしてみよう！
             </pre>
-        </div>
-        <div class="mdl-data-table__cell--non-numeric form-content">
-            <div>
-                <label class="form-item-title" for="name">名前</label>
             </div>
-            <div>
-                <input class="form-input" type="text" id="name" name="name">
+            <div class="mdl-data-table__cell--non-numeric form-content">
+                <div>
+                    <label class="form-item-title" for="name">名前</label>
+                </div>
+                <div>
+                    <input class="form-input" type="text" id="name" name="name">
+                </div>
             </div>
-        </div>
-        <div class="mdl-data-table__cell--non-numeric form-content">
-            <div>
-                <label class="form-item-title" for="age">年齢</label>
+            <div class="mdl-data-table__cell--non-numeric form-content">
+                <div>
+                    <label class="form-item-title" for="age">年齢</label>
+                </div>
+                <select name="age" type="number" id="age" class="form-select">
+                    <option value="0">未選択</option>
+                    <option value="18">18歳</option>
+                    <option value="19">19歳</option>
+                    <option value="20">20歳</option>
+                    <option value="21">21歳</option>
+                    <option value="22">22歳</option>
+                    <option value="23">23歳</option>
+                    <option value="24">24歳</option>
+                    <option value="25">25歳</option>
+                    <option value="26">26歳</option>
+                    <option value="27">27歳</option>
+                </select>
             </div>
-            <select name="age" type="number" id="age" class="form-select">
-                <option value="0">未選択</option>
-                <option value="18">18歳</option>
-                <option value="19">19歳</option>
-                <option value="20">20歳</option>
-                <option value="21">21歳</option>
-                <option value="22">22歳</option>
-                <option value="23">23歳</option>
-                <option value="24">24歳</option>
-                <option value="25">25歳</option>
-                <option value="26">26歳</option>
-                <option value="27">27歳</option>
-            </select>
-        </div>
-        <div class="mdl-data-table__cell--non-numeric form-content">
-            <div>
-                <label class="form-item-title" for="school">学校名</label>
+            <div class="mdl-data-table__cell--non-numeric form-content">
+                <div>
+                    <label class="form-item-title" for="school">学校名</label>
+                </div>
+                <div>
+                    <input class="form-input" type="text" id="school" name="school">
+                </div>
             </div>
-            <div>
-                <input class="form-input" type="text" id="school" name="school">
+            <div class="mdl-data-table__cell--non-numeric form-content">
+                <div>
+                    <label class="form-item-title" for="comment">コメント</label>
+                </div>
+                <div>
+                    <textarea class="form-comment form-input" id="comment" rows="10" name="comment"
+                        wrap="soft"></textarea>
+                </div>
             </div>
-        </div>
-        <div class="mdl-data-table__cell--non-numeric form-content">
-            <div>
-                <label class="form-item-title" for="comment">コメント</label>
+            <div class="form-button-container" style="text-align:center;">
+                <input class="form-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="reset"
+                    value="取消する">
+                <input
+                    class="form-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+                    type="submit" value="送信する">
             </div>
-            <div>
-                <textarea class="form-comment form-input" id="comment" rows="10" name="comment" wrap="soft"></textarea>
-            </div>
-        </div>
-        <div class="form-button-container" style="text-align:center;">
-            <input class="form-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" type="reset"
-                value="取消する">
-            <input
-                class="form-button mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
-                type="submit" value="送信する">
-        </div>
-    </form>
+        </form>
+    </div>
 </body>
 
 </html>
