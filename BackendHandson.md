@@ -48,7 +48,7 @@ $ python -m http.server 8000
 ```
 $ pip install flask             # python2対応
 $ pip3 install flask            # python3対応
-$ python3 -m pip install flask  # 推奨
+$ python -m pip install flask  # 推奨
 $ conda install flask           # anaconda使ってる人向け
 ```
 私は仮想環境上でやっていたので、`conda`でインストールしました。
@@ -81,7 +81,7 @@ if __name__ == "__main__":
 
 ターミナルに以下のコマンドを打ってみましょう。
 ```
-$ python3 server.py 
+$ python server.py 
  * Serving Flask app "server" (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
@@ -173,9 +173,9 @@ namiko
 <img src="img/db.png" alt="image" title="image">
 
 ### sqlite3のインストール
-Macであればデフォルトで入っていると思いますが、一応記述しておきます。
+Macであればデフォルトで入っている可能性が高いです。以下で確認してみてください。
 ```
-$ python3
+$ python
 > import sqlite3
 // ここでエラーが出なければsqliteがインストールされています
 ```
@@ -296,6 +296,62 @@ tori|23.0|お茶情|TEAraの運営をしています。
 namiko|17.0|oo高校|私は昔も17だったんだぜ😢
 ```
 
+## エラー処理の追加
+最後にエラー処理の追加をして次のようになります。
+```
+from flask import Flask, request
+import sqlite3
+
+app_server = Flask(__name__)
+
+@app_server.route('/')
+def hello():
+    return "Hello World"
+
+@app_server.route('/getname')
+def getname():
+    return "Tori"
+
+@app_server.route('/app', methods=['POST'])
+def app():
+    if request.method != 'POST':
+        return "Error", 405
+
+    if not 'name' in request.form:
+        return "Name Key Error", 400
+    name = request.form['name']
+
+    if not 'age' in request.form:
+        return "Age Key Error", 400
+    age = int(request.form['age'])
+
+    if not 'school' in request.form:
+        return "School Key Error", 400
+    school = request.form['school']
+
+    if not 'comment' in request.form:
+        return "Comment Key Error", 400
+    comment = request.form['comment']
+    
+    con = sqlite3.connect('example.db')
+    cur = con.cursor()
+    cur.execute("INSERT INTO user VALUES (?, ?, ?, ?)", (name, age, school, comment))
+
+    con.commit()
+    con.close()
+    return "データが格納されました！"
+
+if __name__ == "__main__":
+    app_server.run(debug=True)
+```
+
 ここまでできたらバックエンドハンズオン修了です！
 
-次はクライアントサイドを作成し、フォームからリクエストを飛ばしてDatabaseにデータを格納することに挑戦してみましょう！
+`index.html`を開いて、フォームを埋めてリクエストを送ってDatabaseにデータを格納することに挑戦してみましょう！
+
+
+## 拡張編
+今回のハンズオンでは簡易なコードを作成したため、拡張できる部分がたくさんあります。
+- 一般的にreturnはreturn用のレスポンスを返すべきです。レスポンス部分の実装をしてみましょう
+- `POST`,`GET`だけでなく`PUT`や`DELETE`にも対応できるようにしてみましょう
+- 違うデータベースを使ってみましょう(MySQLなど。NoSQL使ってみても面白いかもしれません。)
