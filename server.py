@@ -14,11 +14,22 @@ def getname():
 @app_server.route('/app', methods=['POST'])
 def app():
     if request.method != 'POST':
-        return "Error"
+        return "Error", 405
 
+    if not 'name' in request.form:
+        return "Name Key Error", 400
     name = request.form['name']
+
+    if not 'age' in request.form:
+        return "Age Key Error", 400
     age = int(request.form['age'])
+
+    if not 'school' in request.form:
+        return "School Key Error", 400
     school = request.form['school']
+
+    if not 'comment' in request.form:
+        return "Comment Key Error", 400
     comment = request.form['comment']
     
     con = sqlite3.connect('example.db')
