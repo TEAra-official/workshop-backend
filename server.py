@@ -123,3 +123,5 @@ if __name__ == "__main__":
     # con.commit()
     # con.close()
     # return "データが格納されました！"
+
+    #aaa
